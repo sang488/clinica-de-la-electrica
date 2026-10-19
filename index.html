@@ -293,6 +293,39 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ecg path{animation:none;stroke-dashoffset:0}}
+
+/* dropdown repuestos */
+.dd{position:relative;display:flex;align-items:center}
+.dd-t{display:inline-flex!important;align-items:center;gap:6px}
+.dd-t svg{transition:transform .2s}
+.dd:hover .dd-t svg,.dd:focus-within .dd-t svg{transform:rotate(180deg)}
+.dd-m{position:absolute;top:100%;left:-14px;padding-top:14px;opacity:0;visibility:hidden;transform:translateY(6px);transition:opacity .18s,transform .18s,visibility .18s}
+.dd-m::before{content:"";position:absolute;inset:14px 0 0;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 40px rgba(0,0,0,.1);z-index:-1}
+.dd:hover .dd-m,.dd:focus-within .dd-m{opacity:1;visibility:visible;transform:none}
+.dd-m a{display:block;padding:11px 18px!important;min-width:180px;margin:0 6px;border-radius:10px}
+.dd-m a:first-child{margin-top:6px}.dd-m a:last-child{margin-bottom:6px}
+.dd-m a::after{display:none}
+.dd-m a:hover{background:var(--soft);color:var(--gd)}
+@media(max-width:980px){
+  .dd{flex-direction:column;align-items:stretch}
+  .dd-t svg{display:none}
+  .dd-m{position:static;opacity:1;visibility:visible;transform:none;padding:0 0 0 18px}
+  .dd-m::before{display:none}
+  .dd-m a{margin:0;min-width:0;border-radius:0;font-size:.95rem!important;color:var(--muted)}
+  .dd-m a:first-child{margin-top:0}.dd-m a:last-child{margin-bottom:0}
+}
+/* repuestos */
+.rep-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rep{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px 26px;display:flex;flex-direction:column;scroll-margin-top:100px;transition:transform .2s,box-shadow .2s}
+.rep:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,60,40,.09)}
+.rep .n{font-weight:900;color:var(--gd);font-size:.8rem;letter-spacing:.14em}
+.rep h3{font-size:1.6rem;font-weight:900;margin:6px 0 10px}
+.rep>p{color:var(--muted);font-weight:500;margin-bottom:16px}
+.rep ul{list-style:none;display:grid;gap:8px;margin-bottom:24px;flex:1}
+.rep li{display:flex;gap:10px;font-weight:600;font-size:.95rem}
+.rep li::before{content:"";flex-shrink:0;width:7px;height:7px;border-radius:50%;background:var(--g1);margin-top:9px}
+.rep .btn{justify-content:center}
+@media(max-width:900px){.rep-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -311,11 +344,15 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
   <div class="wrap">
     <a href="#inicio" class="logo"><img src="assets/logo.png" alt="Clínica de la Eléctrica" /></a>
     <nav>
-      <a href="#despiece">Despiece</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#bateria">Batería</a>
       <a href="#historia">Historia clínica</a>
-      <a href="#ubicacion">Cómo llegar</a>
+      <div class="dd">
+        <a href="#repuestos" class="dd-t">Repuestos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="dd-m">
+          <a href="#rep-baterias">Baterías</a>
+          <a href="#rep-llantas">Llantas</a>
+          <a href="#rep-piezas">Piezas</a>
+        </div>
+      </div>
     </nav>
     <div class="nav-right">
       <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg><span>Agendar cita</span></a>
@@ -560,11 +597,31 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
   </div>
 </section>
 
-<!-- ══════════ 06 FLOTAS ══════════ -->
-<section class="sec dark" id="flotas">
+<!-- ══════════ 06 REPUESTOS ══════════ -->
+<section class="sec" id="repuestos">
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="sec-num">06</div>
+      <div>
+        <span class="kicker">Repuestos</span>
+        <h2>Lo que tu moto necesita, <span class="gtxt">en un solo lugar.</span></h2>
+        <p>Te ayudamos a encontrar el repuesto correcto para tu moto eléctrica y lo instalamos en el taller.</p>
+      </div>
+    </div>
+    <div class="rep-grid reveal">
+      <article class="rep" id="rep-baterias"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><span class="n">01</span><h3>Baterías</h3><p>Baterías de litio para motos y scooters eléctricos.</p><ul><li>Asesoría según voltaje y capacidad</li><li>Revisión del estado de tu batería actual</li><li>Cargadores compatibles</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar una batería para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar batería</a></article>
+      <article class="rep" id="rep-llantas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></div><span class="n">02</span><h3>Llantas</h3><p>Llantas y neumáticos para motos y scooters eléctricos.</p><ul><li>Diferentes medidas y referencias</li><li>Cambio e instalación en el taller</li><li>Revisión de rines y presión</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar llantas para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar llantas</a></article>
+      <article class="rep" id="rep-piezas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><span class="n">03</span><h3>Piezas</h3><p>Repuestos para los sistemas de tu moto.</p><ul><li>Frenos, pastillas y discos</li><li>Controladores, aceleradores y sensores</li><li>Luces, cableado y accesorios</li></ul><a class="btn btn-g wa-link" data-msg="Hola, necesito un repuesto para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar pieza</a></article>
+    </div>
+    <div class="note-strip reveal"><svg width="22" height="22" style="color:var(--gd)"><use href="#i-bolt"/></svg>Escríbenos la marca y el modelo de tu moto y te confirmamos disponibilidad.</div>
+  </div>
+</section>
+
+<!-- ══════════ 07 FLOTAS ══════════ -->
+<section class="sec dark" id="flotas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07</div>
       <div>
         <span class="kicker">Para quién</span>
         <h2>Para motousuarios, <span class="gtxt">domiciliarios y flotas.</span></h2>
@@ -586,11 +643,11 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
   </div>
 </section>
 
-<!-- ══════════ 07 UBICACIÓN ══════════ -->
+<!-- ══════════ 08 UBICACIÓN ══════════ -->
 <section class="sec" id="ubicacion">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-num">07</div>
+      <div class="sec-num">08</div>
       <div>
         <span class="kicker">Dónde estamos</span>
         <h2>Trae tu moto <span class="gtxt">a Briceño.</span></h2>
