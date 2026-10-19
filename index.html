@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Clínica de la Eléctrica — Taller de motos eléctricas en Briceño</title>
+<meta name="description" content="Diagnóstico, mantenimiento y reparación de motos y scooters eléctricos multimarca. Nueva sede en Briceño para Sopó, Briceño y Tocancipá. Agenda por WhatsApp 319 503 7492." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<link rel="icon" href="assets/logo.png" />
+<style>
+:root{
+  --ink:#0e0f0f; --ink2:#2a2d2c; --muted:#5f6763;
+  --g1:#63af84; --g2:#89bc74; --gd:#2f8a57; --gdd:#1f6b40;
+  --soft:#f1f7ef; --line:#e3ece0; --bg:#ffffff;
+  --ok:#5fb37c; --warn:#f2b33d; --bad:#e2574c; --idle:#c9d1cc;
+  --grad:linear-gradient(90deg,var(--g1),var(--g2));
+  --r:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Montserrat',system-ui,sans-serif;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.gtxt{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:10px;font-weight:800;border-radius:999px;padding:16px 28px;font-size:1rem;transition:transform .15s, box-shadow .15s, background .15s;cursor:pointer;border:0}
+.btn:hover{transform:translateY(-2px)}
+.btn-g{background:var(--grad);color:#fff;box-shadow:0 10px 28px rgba(47,138,87,.32)}
+.btn-k{background:var(--ink);color:#fff}
+.btn-o{background:#fff;color:var(--ink);border:2px solid var(--ink)}
+.btn svg{flex-shrink:0}
+
+/* ── NAV ── */
+header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:78px;gap:24px}
+.nav .logo img{height:46px;width:auto}
+.nav nav{display:flex;gap:26px;font-weight:700;font-size:.92rem}
+.nav nav a{position:relative;padding:6px 0}
+.nav nav a::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad);border-radius:3px;transition:width .2s}
+.nav nav a:hover::after{width:100%}
+.nav .btn{padding:12px 20px;font-size:.9rem}
+.burger{display:none;width:46px;height:46px;border-radius:14px;border:1.5px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2.5px;border-radius:2px;background:var(--ink);position:relative;transition:transform .2s, background .2s}
+.burger span::before,.burger span::after{content:"";position:absolute;left:0}
+.burger span::before{top:-7px}.burger span::after{top:7px}
+.nav.open .burger span{background:transparent}
+.nav.open .burger span::before{transform:translateY(7px) rotate(45deg)}
+.nav.open .burger span::after{transform:translateY(-7px) rotate(-45deg)}
+.nav-right{display:flex;align-items:center;gap:10px}
+@media(max-width:980px){
+  .nav nav{display:none;position:absolute;top:78px;left:0;right:0;background:#fff;flex-direction:column;gap:0;padding:8px 24px 20px;border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(0,0,0,.08)}
+  .nav.open nav{display:flex}
+  .nav nav a{padding:16px 0;border-bottom:1px solid var(--line);font-size:1.05rem}
+  .nav nav a::after{display:none}
+  .burger{display:flex}
+}
+@media(max-width:520px){.nav .btn span{display:none}.nav .btn{padding:12px}}
+
+/* ── HERO ── */
+.hero{position:relative;padding:72px 0 0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-weight:800;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gd)}
+.kicker::before{content:"";width:28px;height:3px;background:var(--grad);border-radius:3px}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.6rem);line-height:1.02;font-weight:900;letter-spacing:-.025em;margin:18px 0 20px}
+.hero p.lead{font-size:clamp(1.05rem,1.5vw,1.22rem);color:var(--muted);max-width:36rem;font-weight:500}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:32px}
+.hero .art{position:relative;height:560px}
+.hero .art .disc{position:absolute;right:0;bottom:0;width:440px;height:440px;border-radius:50%;background:var(--soft);border:2px solid var(--line)}
+.hero .art .disc::after{content:"";position:absolute;inset:34px;border-radius:50%;border:2px dashed #cfe2cb}
+.hero .art img{position:absolute;right:110px;bottom:-30px;height:590px;width:auto;filter:drop-shadow(0 24px 30px rgba(0,0,0,.15))}
+.hero .art .tag{position:absolute;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 34px rgba(0,0,0,.12);font-weight:800;font-size:.88rem;display:flex;align-items:center;gap:10px;border:1px solid var(--line)}
+.hero .art .tag i{width:34px;height:34px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-style:normal}
+.hero .art .tag small{display:block;font-weight:600;color:var(--muted);font-size:.74rem}
+.ecg{display:block;width:100%;height:90px;margin-top:40px}
+.ecg path{fill:none;stroke:url(#gline);stroke-width:4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:2400;stroke-dashoffset:2400;animation:draw 2.6s ease-out .3s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.stats-bar{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;position:relative;z-index:2}
+.hero .wrap.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}
+.stats div{padding:26px 24px;border-right:1px solid var(--line)}
+.stats div:first-child{padding-left:0}
+.stats div:last-child{border-right:0}
+.stats b{display:block;font-size:clamp(1.5rem,2.4vw,2.1rem);font-weight:900;letter-spacing:-.02em;line-height:1.1}
+.stats span{color:var(--muted);font-weight:600;font-size:.9rem}
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:1fr}
+  .hero .art{height:420px}
+  .hero .art .disc{width:340px;height:340px;right:50%;transform:translateX(50%)}
+  .hero .art img{height:440px;right:50%;transform:translateX(50%)}
+  .hero .art .tag{display:none}
+  .hero .wrap.stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(3){padding-left:0}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+/* ── SECCIONES ── */
+section.sec{padding:110px 0}
+.sec-head{display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;margin-bottom:54px}
+.sec-num{font-size:clamp(4rem,9vw,7.5rem);font-weight:900;line-height:.8;letter-spacing:-.04em;color:transparent;-webkit-text-stroke:2px var(--g1)}
+.sec-head h2{font-size:clamp(2rem,4vw,3.3rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-top:10px}
+.sec-head p{color:var(--muted);font-size:1.08rem;max-width:42rem;margin-top:14px;font-weight:500}
+.soft{background:var(--soft)}
+.dark{background:var(--ink);color:#fff}
+.dark .sec-head p{color:#b9c4bd}
+.dark .kicker{color:var(--g2)}
+@media(max-width:700px){.sec-head{grid-template-columns:1fr;gap:6px}section.sec{padding:80px 0}}
+
+/* 01 Despiece */
+.despiece{display:grid;grid-template-columns:1.35fr .65fr;gap:36px;align-items:center}
+.moto-box{position:relative;background:#fff;border:1px solid var(--line);border-radius:28px;padding:28px 20px 16px;box-shadow:0 20px 50px rgba(30,60,40,.07)}
+.moto-box .count{position:absolute;top:20px;left:24px;font-weight:800;font-size:.8rem;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.moto-box .count b{color:var(--ink)}
+.moto-svg{width:100%;height:auto;display:block}
+.moto-svg .part{transition:opacity .3s, filter .3s}
+.moto-svg.focus .part{opacity:.28}
+.moto-svg.focus .part.on{opacity:1;filter:drop-shadow(0 0 10px rgba(99,175,132,.85))}
+.hot{cursor:pointer}
+.hot circle.dot{fill:var(--ink);stroke:#fff;stroke-width:3;transition:fill .2s}
+.hot text{fill:#fff;font:800 13px Montserrat,sans-serif;text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.hot circle.ring{fill:none;stroke:var(--g1);stroke-width:3;opacity:0}
+.hot.on circle.dot{fill:var(--gd)}
+.hot.on circle.ring{animation:ring 1.4s ease-out infinite}
+@keyframes ring{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2)}}
+.hot circle.ring{transform-box:fill-box;transform-origin:center}
+.part-info{min-height:132px;margin-top:6px;padding:18px 22px;border-radius:18px;background:var(--soft)}
+.part-info h3{font-size:1.25rem;font-weight:900}
+.part-info p{color:var(--muted);font-weight:500;margin-top:4px}
+.part-list{list-style:none;display:grid;gap:6px}
+.part-list li{display:flex;align-items:center;gap:14px;padding:11px 14px;border-radius:14px;cursor:pointer;font-weight:700;transition:background .15s}
+.part-list li span{width:34px;height:34px;flex-shrink:0;border-radius:10px;background:var(--soft);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.8rem;color:var(--gd)}
+.part-list li:hover{background:var(--soft)}
+.part-list li.on{background:var(--ink);color:#fff}
+.part-list li.on span{background:var(--grad);color:#fff}
+@media(max-width:900px){.despiece{grid-template-columns:1fr}.part-list{grid-template-columns:1fr 1fr}}
+
+/* 02 Anatomía */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.sys{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;transition:transform .2s, box-shadow .2s}
+.sys:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(30,60,40,.09)}
+.ico{width:54px;height:54px;border-radius:16px;background:var(--grad);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+.sys h3{font-size:1.08rem;font-weight:800;margin-bottom:6px}
+.sys p{color:var(--muted);font-size:.93rem;font-weight:500}
+.note-strip{margin-top:28px;display:flex;align-items:center;gap:14px;font-weight:700;padding:18px 22px;border-radius:18px;background:#fff;border:1px dashed var(--g1)}
+@media(max-width:980px){.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.grid4{grid-template-columns:1fr}}
+
+/* 03 Servicios */
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.svc{background:#1a1c1b;border:1px solid #2c302e;border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden}
+.svc .n{font-weight:900;color:var(--g2);font-size:.85rem;letter-spacing:.1em}
+.svc h3{font-size:1.3rem;font-weight:900;margin:8px 0 12px}
+.svc ul{list-style:none;display:grid;gap:7px}
+.svc li{display:flex;gap:10px;color:#cfd8d2;font-weight:500;font-size:.95rem}
+.svc li::before{content:"";flex-shrink:0;width:7px;height:7px;border-radius:50%;background:var(--g1);margin-top:9px}
+.svc.feat{background:var(--grad);border:0;color:#fff}
+.svc.feat .n{color:#fff;opacity:.85}
+.svc.feat li{color:#fff}
+.svc.feat li::before{background:#fff}
+.svc .badge{position:absolute;top:22px;right:22px;background:#fff;color:var(--gdd);font-weight:900;font-size:.75rem;padding:6px 12px;border-radius:999px;letter-spacing:.06em}
+.process{margin-top:56px;background:#141615;border:1px solid #2c302e;border-radius:28px;padding:40px}
+.process h3{font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:900;line-height:1.1}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:30px 0}
+.step{position:relative;padding:22px;border-radius:18px;background:#1d201f}
+.step b{display:flex;width:42px;height:42px;border-radius:12px;background:var(--grad);align-items:center;justify-content:center;font-weight:900;margin-bottom:14px}
+.step h4{font-weight:800;font-size:1.02rem;margin-bottom:4px}
+.step p{color:#aeb9b2;font-size:.9rem;font-weight:500}
+@media(max-width:980px){.svc-grid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.svc-grid,.steps{grid-template-columns:1fr}.process{padding:26px}}
+
+/* 04 Batería */
+.bat{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.bat .big{font-size:clamp(1.8rem,3.4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-.02em}
+.bat p{color:var(--muted);font-weight:500;margin-top:14px;font-size:1.05rem}
+.pack{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 20px 50px rgba(30,60,40,.07)}
+.pack-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-weight:800}
+.pack-top small{color:var(--muted);font-weight:600}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:7px;padding:16px;border-radius:18px;background:#0e0f0f;position:relative}
+.cells::after{content:"";position:absolute;right:-12px;top:50%;transform:translateY(-50%);width:12px;height:44px;background:#0e0f0f;border-radius:0 6px 6px 0}
+.cell{aspect-ratio:1/1.6;border-radius:6px;background:var(--idle);transition:background .35s, transform .35s}
+.cell.ok{background:var(--ok)}.cell.warn{background:var(--warn)}.cell.bad{background:var(--bad)}
+.cell.pop{transform:scale(1.12)}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:16px;font-weight:700;font-size:.85rem}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:4px;margin-right:6px;vertical-align:-1px}
+.pack .res{margin-top:16px;padding:14px 16px;border-radius:14px;background:var(--soft);font-weight:700;min-height:52px}
+@media(max-width:900px){.bat{grid-template-columns:1fr}}
+
+/* 05 Historia clínica */
+.hc{display:grid;grid-template-columns:.95fr 1.05fr;gap:36px;align-items:start}
+.chart{background:#fff;border-radius:26px;border:1px solid var(--line);overflow:hidden;box-shadow:0 20px 50px rgba(30,60,40,.08)}
+.chart-top{background:var(--ink);color:#fff;padding:22px 26px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.chart-top b{font-size:1.15rem;font-weight:900}
+.chart-top small{color:var(--g2);font-weight:800;letter-spacing:.1em;font-size:.72rem}
+.chart-body{padding:22px 26px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field small{display:block;color:var(--muted);font-weight:700;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.field b{font-weight:800}
+.vitals{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.vital{border:1px solid var(--line);border-radius:14px;padding:12px}
+.vital small{color:var(--muted);font-weight:700;font-size:.75rem}
+.bar{height:8px;border-radius:8px;background:#e8eee6;margin-top:8px;overflow:hidden}
+.bar i{display:block;height:100%;border-radius:8px;background:var(--grad)}
+.timeline{display:grid;gap:14px}
+.entry{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 22px;border-radius:20px;background:#fff;border:1px solid var(--line)}
+.entry .d{font-weight:900;color:var(--gd);font-size:.85rem;white-space:nowrap}
+.entry h4{font-weight:800}
+.entry p{color:var(--muted);font-weight:500;font-size:.93rem}
+.ex{display:inline-block;margin-top:14px;font-size:.78rem;color:var(--muted);font-weight:600}
+@media(max-width:900px){.hc{grid-template-columns:1fr}}
+
+/* 06 Flotas */
+.fleet{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
+.fleet-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fl{padding:22px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
+.fl b{color:var(--g2);font-weight:900;font-size:.85rem}
+.fl h4{font-weight:800;margin:6px 0 4px}
+.fl p{color:#b9c4bd;font-size:.92rem;font-weight:500}
+.zones{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.zones span{padding:10px 18px;border-radius:999px;border:1.5px solid var(--g1);font-weight:800;font-size:.9rem}
+@media(max-width:900px){.fleet{grid-template-columns:1fr}}
+@media(max-width:560px){.fleet-list{grid-template-columns:1fr}}
+
+/* 07 Ubicación */
+.route{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.rstep{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:3/4;background:#ddd}
+.rstep img{width:100%;height:100%;object-fit:cover}
+.rstep::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.78) 0%,rgba(0,0,0,0) 55%)}
+.rstep div{position:absolute;left:18px;right:18px;bottom:18px;z-index:1;color:#fff}
+.rstep b{display:inline-flex;width:34px;height:34px;border-radius:10px;background:var(--grad);align-items:center;justify-content:center;font-weight:900;margin-bottom:10px}
+.rstep h4{font-weight:900;font-size:1.15rem;line-height:1.15}
+.rstep.here{outline:4px solid var(--g1);outline-offset:-4px}
+.info{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
+.info a,.info div{display:flex;gap:14px;align-items:center;padding:20px;border-radius:20px;background:#fff;border:1px solid var(--line);font-weight:800;transition:border-color .15s}
+.info a:hover{border-color:var(--g1)}
+.info small{display:block;color:var(--muted);font-weight:600;font-size:.8rem}
+.info .ic{width:46px;height:46px;flex-shrink:0;border-radius:14px;background:var(--soft);display:flex;align-items:center;justify-content:center}
+@media(max-width:980px){.route,.info{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.info{grid-template-columns:1fr}}
+
+/* CTA final + footer */
+.cta-final{padding:90px 0;background:var(--soft);overflow:hidden}
+.cta-final .wrap{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.cta-final img{height:300px;width:auto}
+.cta-final h2{font-size:clamp(2rem,4.4vw,3.6rem);font-weight:900;line-height:1.02;letter-spacing:-.02em}
+.cta-final p{color:var(--muted);font-weight:500;margin:14px 0 26px;font-size:1.1rem}
+@media(max-width:760px){.cta-final .wrap{grid-template-columns:1fr;text-align:center}.cta-final img{margin:0 auto;height:220px}.cta-final .btns{justify-content:center}}
+footer{background:var(--ink);color:#cfd8d2;padding:56px 0 30px}
+footer .top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px;padding-bottom:34px;border-bottom:1px solid #2a2d2c}
+footer .lg{background:#fff;border-radius:16px;padding:14px 18px;display:inline-block}
+footer .lg img{height:48px;width:auto}
+footer h5{color:#fff;font-weight:900;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:14px}
+footer ul{list-style:none;display:grid;gap:8px;font-weight:600}
+footer a:hover{color:var(--g2)}
+footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:760px){footer .top{grid-template-columns:1fr}}
+
+@media(max-width:600px){
+  .wrap{padding:0 18px}
+  .nav .wrap{height:68px}.nav .logo img{height:38px}.nav nav{top:68px}
+  .hero{padding-top:40px}
+  .hero h1{font-size:2.5rem}
+  .hero .ctas .btn{width:100%;justify-content:center}
+  .hero .art{height:320px;margin-top:6px}
+  .hero .art .disc{width:270px;height:270px}
+  .hero .art img{height:350px;bottom:-14px}
+  .ecg{margin-top:10px;height:60px}
+  .stats div{padding:18px 12px 18px 0}
+  .stats b{font-size:1.3rem}.stats span{font-size:.8rem}
+  .sec-head{margin-bottom:34px}
+  .sec-num{font-size:3.6rem}
+  .sec-head h2{font-size:2rem}
+  .moto-box{padding:40px 6px 8px;border-radius:22px}
+  .moto-box .count{top:14px;left:16px}
+  .part-info{margin:8px 6px 0;padding:14px 16px}
+  .part-list{display:flex;overflow-x:auto;gap:8px;padding:4px 2px 10px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .part-list li{flex:none;white-space:nowrap;padding:9px 14px 9px 9px;border:1px solid var(--line);scroll-snap-align:start}
+  .part-list li span{width:28px;height:28px}
+  .grid4{grid-template-columns:1fr 1fr;gap:12px}
+  .sys{padding:18px 14px}.sys h3{font-size:.98rem}.sys p{font-size:.82rem}
+  .ico{width:42px;height:42px;border-radius:12px;margin-bottom:12px}.ico svg{width:22px;height:22px}
+  .note-strip{font-size:.9rem}
+  .svc{padding:22px 20px}
+  .process .btn,.bat .btn,.fleet .btn,.cta-final .btn{width:100%;justify-content:center}
+  .chart-body{grid-template-columns:1fr 1fr;padding:18px}
+  .chart-top{padding:18px}.chart-top b{font-size:1rem}
+  .entry{grid-template-columns:1fr;gap:4px}
+  .cells{grid-template-columns:repeat(10,1fr);gap:4px;padding:10px}
+  .route{gap:10px}.rstep h4{font-size:.98rem}.rstep div{left:12px;right:12px;bottom:12px}
+  .cta-final{padding:64px 0}
+  .wa-float{width:56px;height:56px;right:16px;bottom:16px}
+}
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:60;width:62px;height:62px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,.25)}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.ecg path{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <linearGradient id="gline" x1="0" x2="1"><stop offset="0" stop-color="#63af84"/><stop offset="1" stop-color="#89bc74"/></linearGradient>
+    <symbol id="i-wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.5a9.4 9.4 0 0 1-4.79-1.31l-.34-.2-3.56.93.95-3.47-.22-.36a9.4 9.4 0 0 1-1.44-5.01c0-5.2 4.23-9.43 9.44-9.43 2.52 0 4.89.98 6.67 2.77a9.36 9.36 0 0 1 2.76 6.67c0 5.2-4.24 9.42-9.44 9.42zm8.03-17.45A11.3 11.3 0 0 0 12.05.72C5.79.72.7 5.8.7 12.06c0 2 .52 3.95 1.52 5.67L.6 23.28l5.68-1.49a11.3 11.3 0 0 0 5.76 1.47c6.26 0 11.35-5.09 11.35-11.35 0-3.03-1.18-5.88-3.32-8.02z"/></symbol>
+    <symbol id="i-bolt" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" d="M13 2 4 14h7l-1 8 9-12h-7z"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ══════════ NAV ══════════ -->
+<header class="nav" id="topnav">
+  <div class="wrap">
+    <a href="#inicio" class="logo"><img src="assets/logo.png" alt="Clínica de la Eléctrica" /></a>
+    <nav>
+      <a href="#despiece">Despiece</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#bateria">Batería</a>
+      <a href="#historia">Historia clínica</a>
+      <a href="#ubicacion">Cómo llegar</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg><span>Agendar cita</span></a>
+      <button class="burger" type="button" aria-label="Menú" onclick="this.closest('.nav').classList.toggle('open')"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div>
+      <span class="kicker">Taller de motos eléctricas · Multimarca</span>
+      <h1>Le tomamos el <span class="gtxt">pulso</span> a tu moto eléctrica.</h1>
+      <p class="lead">Diagnóstico, mantenimiento y reparación de motos y scooters eléctricos de todas las marcas, con un técnico especializado. Nueva sede en <b>Briceño</b>, para motousuarios de Sopó, Briceño y Tocancipá.</p>
+      <div class="ctas">
+        <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar por WhatsApp</a>
+        <a class="btn btn-o" href="tel:+573195037492"><svg width="20" height="20"><use href="#i-phone"/></svg>319 503 7492</a>
+      </div>
+    </div>
+    <div class="art">
+      <div class="disc"></div>
+      <img src="assets/mascota.png" alt="Técnico de la Clínica de la Eléctrica" />
+      <div class="tag" style="left:0;top:330px;"><i><svg width="18" height="18" style="color:#fff"><use href="#i-bolt"/></svg></i><span>Diagnóstico gratis*<small>Por tiempo limitado</small></span></div>
+      <div class="tag" style="right:0;top:430px;"><i><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round"><path d="M5 13l4 4L19 7"/></svg></i><span>Todas las marcas<small>Técnico especializado</small></span></div>
+    </div>
+  </div>
+  <svg class="ecg" viewBox="0 0 1600 90" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0 60 H520 l18 -10 l14 10 h40 l20 -52 l26 82 l22 -54 l14 24 h60 l16 -8 l14 8 H1600" />
+  </svg>
+  <div class="stats-bar"><div class="wrap stats">
+    <div><b class="gtxt">Gratis*</b><span>Diagnóstico de tu moto eléctrica</span></div>
+    <div><b>Multimarca</b><span>Técnico especializado en eléctricas</span></div>
+    <div><b>Briceño</b><span>Nueva sede · Sopó y Tocancipá cerca</span></div>
+    <div><b>9:00 – 6:00</b><span>Horario de atención</span></div>
+  </div></div>
+</section>
+
+<!-- ══════════ 01 DESPIECE ══════════ -->
+<section class="sec" id="despiece">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">01</div>
+      <div>
+        <span class="kicker">Despiece</span>
+        <h2>Conocemos tu moto <span class="gtxt">pieza por pieza.</span></h2>
+        <p>Una moto eléctrica es un sistema completo: batería, motor, controlador y todo lo que los conecta. Toca cada punto y mira qué revisamos en la Clínica.</p>
+      </div>
+    </div>
+    <div class="despiece reveal">
+      <div>
+        <div class="moto-box">
+          <div class="count">Despiece · <b id="pc-n">01</b> / 10</div>
+          <svg class="moto-svg" id="moto" viewBox="0 0 820 470" role="img" aria-label="Diagrama de una moto eléctrica">
+            <!-- piso -->
+            <line x1="40" y1="452" x2="790" y2="452" stroke="#e3ece0" stroke-width="3" stroke-linecap="round"/>
+            <!-- 10 chasis / carrocería -->
+            <g class="part" data-p="10">
+              <path d="M300 352 L548 352 L560 330 L292 330 Z" fill="#2a2d2c"/>
+              <path d="M262 92 L300 92 L318 330 L288 352 C250 280 238 180 262 92 Z" fill="#0e0f0f"/>
+              <path d="M470 330 C480 252 560 224 650 236 C724 246 746 300 726 340 L560 344 Z" fill="#0e0f0f"/>
+              <path d="M640 250 C690 252 716 270 722 300" fill="none" stroke="#63af84" stroke-width="4" stroke-linecap="round"/>
+            </g>
+            <!-- asiento -->
+            <g class="part" data-p="10"><path d="M470 236 C500 214 610 210 660 226 C668 232 664 242 652 242 L478 248 C466 248 462 242 470 236 Z" fill="#2a2d2c"/></g>
+            <!-- 01 batería -->
+            <g class="part" data-p="1">
+              <rect x="318" y="296" width="200" height="30" rx="7" fill="#fff" stroke="#63af84" stroke-width="4"/>
+              <g fill="#89bc74"><rect x="330" y="303" width="30" height="16" rx="3"/><rect x="366" y="303" width="30" height="16" rx="3"/><rect x="402" y="303" width="30" height="16" rx="3"/><rect x="438" y="303" width="30" height="16" rx="3"/><rect x="474" y="303" width="30" height="16" rx="3" fill="#cfe2cb"/></g>
+            </g>
+            <!-- 03 controlador -->
+            <g class="part" data-p="3"><rect x="568" y="300" width="58" height="34" rx="6" fill="#63af84"/><path d="M582 317h30M597 306v22" stroke="#fff" stroke-width="3" stroke-linecap="round"/></g>
+            <!-- 04 cargador / puerto -->
+            <g class="part" data-p="4"><rect x="432" y="258" width="26" height="30" rx="6" fill="#89bc74"/><path d="M441 266v6M449 266v6M439 278h12" stroke="#0e0f0f" stroke-width="2.5" stroke-linecap="round"/></g>
+            <!-- 06 suspensión -->
+            <g class="part" data-p="6">
+              <path d="M268 140 L196 372" stroke="#5f6763" stroke-width="12" stroke-linecap="round"/>
+              <path d="M262 160 L246 212" stroke="#89bc74" stroke-width="16" stroke-linecap="round"/>
+              <path d="M640 330 L676 372" stroke="#5f6763" stroke-width="9" stroke-linecap="round"/>
+              <path d="M628 300 L652 334" stroke="#89bc74" stroke-width="13" stroke-linecap="round"/>
+            </g>
+            <!-- 07 llantas -->
+            <g class="part" data-p="7">
+              <circle cx="190" cy="378" r="72" fill="#0e0f0f"/><circle cx="190" cy="378" r="50" fill="#d5dbd7"/><circle cx="190" cy="378" r="10" fill="#0e0f0f"/>
+              <circle cx="676" cy="378" r="72" fill="#0e0f0f"/><circle cx="676" cy="378" r="50" fill="#d5dbd7"/>
+            </g>
+            <!-- 02 motor (hub trasero) -->
+            <g class="part" data-p="2"><circle cx="676" cy="378" r="34" fill="#63af84"/><circle cx="676" cy="378" r="18" fill="#0e0f0f"/><path d="M679 366 l-9 14 h8 l-3 12 l10 -15 h-8 z" fill="#89bc74"/></g>
+            <!-- 05 frenos -->
+            <g class="part" data-p="5"><circle cx="190" cy="378" r="32" fill="none" stroke="#5f6763" stroke-width="7" stroke-dasharray="7 5"/><path d="M206 344 a36 36 0 0 1 22 18" stroke="#e2574c" stroke-width="10" stroke-linecap="round" fill="none"/></g>
+            <!-- 08 tablero y controles -->
+            <g class="part" data-p="8">
+              <path d="M226 78 L340 70" stroke="#0e0f0f" stroke-width="9" stroke-linecap="round"/>
+              <rect x="252" y="56" width="58" height="26" rx="8" fill="#2a2d2c"/><rect x="259" y="62" width="44" height="14" rx="4" fill="#89bc74"/>
+              <rect x="324" y="64" width="24" height="12" rx="5" fill="#2a2d2c"/><rect x="214" y="72" width="22" height="12" rx="5" fill="#2a2d2c"/>
+            </g>
+            <!-- 09 luces e instalación -->
+            <g class="part" data-p="9">
+              <circle cx="262" cy="118" r="17" fill="#fff" stroke="#0e0f0f" stroke-width="5"/><circle cx="262" cy="118" r="7" fill="#f2b33d"/>
+              <rect x="718" y="276" width="16" height="22" rx="5" fill="#e2574c"/>
+              <path d="M300 160 C340 230 360 270 420 300 M526 312 C560 300 600 290 720 286" fill="none" stroke="#f2b33d" stroke-width="3" stroke-dasharray="6 5"/>
+            </g>
+            <!-- hotspots -->
+            <g id="hots"></g>
+          </svg>
+          <div class="part-info"><h3 id="pi-t"></h3><p id="pi-d"></p></div>
+        </div>
+      </div>
+      <ul class="part-list" id="plist"></ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 02 ANATOMÍA ══════════ -->
+<section class="sec soft" id="sistemas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">02</div>
+      <div>
+        <span class="kicker">Especialidades</span>
+        <h2>Cada sistema, <span class="gtxt">su tratamiento.</span></h2>
+        <p>Como en una clínica: primero entendemos qué le pasa a tu moto y luego la tratamos con la especialidad que necesita.</p>
+      </div>
+    </div>
+    <div class="grid4 reveal">
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><h3>Batería</h3><p>Medición de estado, carga, conexiones y autonomía real.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Motor</h3><p>Motor de rueda: ruidos, pérdida de fuerza, sensores y rodamientos.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3>Controlador</h3><p>El “cerebro” de la moto: fallas de arranque, cortes y códigos de error.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg></div><h3>Carga</h3><p>Cargadores, puertos y cables: si no carga o carga lento, lo revisamos.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M21 12h-2"/></svg></div><h3>Frenos</h3><p>Pastillas, discos, ajuste y corte de motor al frenar.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M8 6h8l-2 4h-4zM10 14h4l2 4H8z"/></svg></div><h3>Suspensión</h3><p>Amortiguadores delanteros y traseros, golpes y desalineación.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><h3>Luces y cableado</h3><p>Instalación eléctrica, luces, pito, direccionales y tablero.</p></div>
+      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Mantenimiento</h3><p>Revisión general preventiva para que tu moto no te deje tirado.</p></div>
+    </div>
+    <div class="note-strip reveal"><svg width="22" height="22" style="color:var(--gd)"><use href="#i-bolt"/></svg>Trabajamos con motos y scooters eléctricos de todas las marcas.</div>
+  </div>
+</section>
+
+<!-- ══════════ 03 SERVICIOS ══════════ -->
+<section class="sec dark" id="servicios">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">03</div>
+      <div>
+        <span class="kicker">Servicios</span>
+        <h2>Todo lo que tu eléctrica necesita, <span class="gtxt">en un solo lugar.</span></h2>
+      </div>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc feat"><span class="badge">GRATIS*</span><span class="n">01</span><h3>Diagnóstico</h3><ul><li>Revisión completa de la moto</li><li>Encontramos la causa real de la falla</li><li>Te explicamos qué tiene y qué no</li></ul></div>
+      <div class="svc"><span class="n">02</span><h3>Batería y carga</h3><ul><li>Prueba de estado y autonomía</li><li>Revisión de cargador y puerto</li><li>Conexiones y BMS</li></ul></div>
+      <div class="svc"><span class="n">03</span><h3>Motor y controlador</h3><ul><li>Pérdida de potencia o tirones</li><li>Fallas de arranque</li><li>Sensores y cableado del motor</li></ul></div>
+      <div class="svc"><span class="n">04</span><h3>Mantenimiento preventivo</h3><ul><li>Ajuste general y lubricación</li><li>Frenos, llantas y suspensión</li><li>Chequeo eléctrico</li></ul></div>
+      <div class="svc"><span class="n">05</span><h3>Sistema eléctrico</h3><ul><li>Luces, pito y direccionales</li><li>Tablero y controles</li><li>Cortos e instalación</li></ul></div>
+      <div class="svc"><span class="n">06</span><h3>Reparación general</h3><ul><li>Cambio de piezas</li><li>Frenos y rodamientos</li><li>Carrocería y ajustes</li></ul></div>
+    </div>
+    <div class="process reveal">
+      <span class="kicker">Cómo trabajamos</span>
+      <h3 style="margin-top:12px">Primero el diagnóstico, <span class="gtxt">después la decisión.</span></h3>
+      <div class="steps">
+        <div class="step"><b>1</b><h4>Revisamos</h4><p>Traes tu moto y le hacemos el diagnóstico.</p></div>
+        <div class="step"><b>2</b><h4>Te explicamos</h4><p>Te contamos qué encontramos, con fotos y en palabras claras.</p></div>
+        <div class="step"><b>3</b><h4>Cotizamos</h4><p>Te enviamos el valor por WhatsApp antes de hacer cualquier cosa.</p></div>
+        <div class="step"><b>4</b><h4>Reparamos</h4><p>Solo trabajamos con tu aprobación. Sin sorpresas.</p></div>
+      </div>
+      <a class="btn btn-g wa-link" data-msg="Hola, quiero agendar un diagnóstico para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar diagnóstico</a>
+      <p style="color:#8b958f;font-size:.82rem;margin-top:14px;font-weight:500">*Diagnóstico gratis por tiempo limitado.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 04 BATERÍA ══════════ -->
+<section class="sec" id="bateria">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">04</div>
+      <div>
+        <span class="kicker">Batería</span>
+        <h2>Antes de cambiar la batería, <span class="gtxt">la revisamos.</span></h2>
+      </div>
+    </div>
+    <div class="bat reveal">
+      <div>
+        <div class="big">La batería es el corazón de tu moto. Y no siempre hay que cambiarla.</div>
+        <p>Muchas veces el problema está en una conexión, en el cargador o en una parte del paquete. Medimos el estado de la batería y te decimos con claridad si se puede recuperar o si de verdad toca reemplazarla.</p>
+        <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
+          <button class="btn btn-k" id="scan" type="button"><svg width="20" height="20"><use href="#i-bolt"/></svg>Simular revisión</button>
+          <a class="btn btn-o wa-link" data-msg="Hola, quiero que revisen la batería de mi moto eléctrica" href="#" target="_blank" rel="noopener">Revisar mi batería</a>
+        </div>
+      </div>
+      <div class="pack">
+        <div class="pack-top"><span>Paquete de batería</span><small id="pk-st">Sin medir</small></div>
+        <div class="cells" id="cells"></div>
+        <div class="legend">
+          <span><i style="background:var(--ok)"></i>En buen estado</span>
+          <span><i style="background:var(--warn)"></i>Al límite</span>
+          <span><i style="background:var(--bad)"></i>Con falla</span>
+          <span><i style="background:var(--idle)"></i>Sin medir</span>
+        </div>
+        <div class="res" id="pk-res">Toca “Simular revisión” para ver cómo leemos una batería.</div>
+        <span class="ex">Esquema ilustrativo.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 05 HISTORIA CLÍNICA ══════════ -->
+<section class="sec soft" id="historia">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">05</div>
+      <div>
+        <span class="kicker">Seguimiento</span>
+        <h2>Tu moto tiene <span class="gtxt">historia clínica.</span></h2>
+        <p>Cada vez que tu moto entra a la Clínica, anotamos qué encontramos y qué le hicimos. Así la próxima vez sabemos de dónde viene.</p>
+      </div>
+    </div>
+    <div class="hc reveal">
+      <div class="chart">
+        <div class="chart-top"><b>PACIENTE: TU MOTO</b><small>HISTORIA CLÍNICA</small></div>
+        <div class="chart-body">
+          <div class="field"><small>Tipo</small><b>Scooter eléctrica</b></div>
+          <div class="field"><small>Motivo de consulta</small><b>Pierde autonomía</b></div>
+          <div class="field"><small>Diagnóstico</small><b>Conexión de batería floja</b></div>
+          <div class="field"><small>Estado</small><b style="color:var(--gd)">● De alta</b></div>
+          <div class="vitals">
+            <div class="vital"><small>Batería</small><div class="bar"><i style="width:86%"></i></div></div>
+            <div class="vital"><small>Motor</small><div class="bar"><i style="width:94%"></i></div></div>
+            <div class="vital"><small>Frenos</small><div class="bar"><i style="width:78%"></i></div></div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="timeline">
+          <div class="entry"><span class="d">Ingreso</span><div><h4>Diagnóstico</h4><p>Revisión completa. Se encuentra conexión floja en la batería y pastillas de freno gastadas.</p></div></div>
+          <div class="entry"><span class="d">Mismo día</span><div><h4>Cotización por WhatsApp</h4><p>Se envían fotos de lo encontrado y el valor del trabajo. El dueño aprueba.</p></div></div>
+          <div class="entry"><span class="d">Salida</span><div><h4>De alta</h4><p>Conexión reparada, frenos cambiados y prueba de ruta. Moto lista para rodar.</p></div></div>
+        </div>
+        <span class="ex">Caso de ejemplo para ilustrar el proceso.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 06 FLOTAS ══════════ -->
+<section class="sec dark" id="flotas">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">06</div>
+      <div>
+        <span class="kicker">Para quién</span>
+        <h2>Para motousuarios, <span class="gtxt">domiciliarios y flotas.</span></h2>
+      </div>
+    </div>
+    <div class="fleet reveal">
+      <div>
+        <p style="color:#cfd8d2;font-size:1.1rem;font-weight:500">Si usas tu moto eléctrica para ir al trabajo, para hacer domicilios o tienes varias motos en tu negocio, te ayudamos a mantenerlas rodando.</p>
+        <div class="zones"><span>Sopó</span><span>Briceño</span><span>Tocancipá</span></div>
+        <div style="margin-top:30px"><a class="btn btn-g wa-link" data-msg="Hola, tengo varias motos eléctricas y quiero hablar de mantenimiento" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Tengo varias motos</a></div>
+      </div>
+      <div class="fleet-list">
+        <div class="fl"><b>01</b><h4>Uso diario</h4><p>Mantenimiento para que tu moto te lleve y te traiga sin sustos.</p></div>
+        <div class="fl"><b>02</b><h4>Domiciliarios</h4><p>Tu moto es tu herramienta de trabajo: la queremos de vuelta en la calle rápido.</p></div>
+        <div class="fl"><b>03</b><h4>Negocios con varias motos</h4><p>Armamos contigo un plan de revisiones para todas tus motos.</p></div>
+        <div class="fl"><b>04</b><h4>Cualquier marca</h4><p>Somos multimarca: no importa dónde compraste tu eléctrica.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ 07 UBICACIÓN ══════════ -->
+<section class="sec" id="ubicacion">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="sec-num">07</div>
+      <div>
+        <span class="kicker">Dónde estamos</span>
+        <h2>Trae tu moto <span class="gtxt">a Briceño.</span></h2>
+        <p>Así llegas a nuestra nueva sede:</p>
+      </div>
+    </div>
+    <div class="route reveal">
+      <div class="rstep"><img src="assets/carretera.jpg" alt="Llegada a Briceño" loading="lazy" /><div><b>1</b><h4>Llega a Briceño</h4></div></div>
+      <div class="rstep"><img src="assets/porton.jpg" alt="Portón negro de entrada" loading="lazy" /><div><b>2</b><h4>Entra por el portón negro</h4></div></div>
+      <div class="rstep"><img src="assets/parqueadero.jpg" alt="Parqueadero" loading="lazy" /><div><b>3</b><h4>Sigue hasta el fondo del parqueadero</h4></div></div>
+      <div class="rstep here"><img src="assets/sede.jpg" alt="Sede Clínica de la Eléctrica" loading="lazy" /><div><b>4</b><h4>¡Aquí es!</h4></div></div>
+    </div>
+    <div class="info reveal">
+      <a class="wa-link" href="#" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" style="color:#25a35a"><use href="#i-wa"/></svg></span><span>319 503 7492<small>WhatsApp y llamadas</small></span></a>
+      <div><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>9:00 AM – 6:00 PM<small>Horario de atención</small></span></div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+de+la+El%C3%A9ctrica+Brice%C3%B1o" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Briceño<small>Ver en Google Maps</small></span></a>
+      <a href="https://www.instagram.com/clinicadelaelectrica/" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#2f8a57"/></svg></span><span>@Clinicadelaelectrica<small>Instagram</small></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CTA FINAL ══════════ -->
+<section class="cta-final">
+  <div class="wrap">
+    <img src="assets/mascota.png" alt="" loading="lazy" />
+    <div>
+      <h2>¿Tu moto eléctrica <span class="gtxt">se quedó sin pulso?</span></h2>
+      <p>Escríbenos, cuéntanos qué le pasa y agenda tu cita en la Clínica de la Eléctrica.</p>
+      <div class="btns" style="display:flex;flex-wrap:wrap;gap:14px">
+        <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar por WhatsApp</a>
+        <a class="btn btn-o" href="tel:+573195037492"><svg width="20" height="20"><use href="#i-phone"/></svg>Llamar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <span class="lg"><img src="assets/logo.png" alt="Clínica de la Eléctrica" /></span>
+        <p style="margin-top:16px;max-width:24rem;font-weight:500">Taller especializado en motos y scooters eléctricos multimarca. Sede Briceño.</p>
+      </div>
+      <div>
+        <h5>Contacto</h5>
+        <ul>
+          <li><a class="wa-link" href="#" target="_blank" rel="noopener">WhatsApp +57 319 503 7492</a></li>
+          <li><a href="tel:+573195037492">Llamar</a></li>
+          <li>Horario: 9:00 AM – 6:00 PM</li>
+        </ul>
+      </div>
+      <div>
+        <h5>Síguenos</h5>
+        <ul>
+          <li><a href="https://www.facebook.com/Clinicadelaelectrica" target="_blank" rel="noopener">Facebook · Clinicadelaelectrica</a></li>
+          <li><a href="https://www.instagram.com/clinicadelaelectrica/" target="_blank" rel="noopener">Instagram · @Clinicadelaelectrica</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="bot"><span>© <span id="yr"></span> Clínica de la Eléctrica</span><span>*Diagnóstico gratis por tiempo limitado.</span></div>
+  </div>
+</footer>
+
+<a class="wa-float wa-link" href="#" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="32" height="32" style="color:#fff"><use href="#i-wa"/></svg></a>
+
+<script>
+// ── WhatsApp ──
+var WA = '573195037492';
+var WA_MSG = 'Hola, quiero agendar una cita en la Clínica de la Eléctrica';
+document.querySelectorAll('.wa-link').forEach(function(a){
+  a.href = 'https://wa.me/' + WA + '?text=' + encodeURIComponent(a.dataset.msg || WA_MSG);
+});
+document.getElementById('yr').textContent = new Date().getFullYear();
+document.querySelectorAll('#topnav nav a').forEach(function(a){ a.addEventListener('click', function(){ document.getElementById('topnav').classList.remove('open'); }); });
+
+// ── 01 Despiece interactivo ──
+var PARTS = [
+  {t:'Batería de litio', d:'Revisamos estado, voltaje, conexiones y cuánta autonomía real le queda.', x:418, y:282},
+  {t:'Motor', d:'El motor va en la rueda trasera. Revisamos ruidos, fuerza, sensores y rodamientos.', x:676, y:330},
+  {t:'Controlador', d:'Es el cerebro: reparte la energía de la batería al motor. Revisamos fallas y cortes.', x:597, y:288},
+  {t:'Carga', d:'Cargador, puerto y cables. Si tu moto no carga o carga lento, aquí está la pista.', x:445, y:244},
+  {t:'Frenos', d:'Pastillas, discos y el sensor que corta el motor al frenar.', x:228, y:340},
+  {t:'Suspensión', d:'Amortiguadores delanteros y traseros: golpes, fugas y ajuste.', x:240, y:196},
+  {t:'Llantas y rodamientos', d:'Desgaste, presión, pinchazos y rodamientos de las ruedas.', x:134, y:420},
+  {t:'Tablero y controles', d:'Pantalla, acelerador, botones y manubrio.', x:282, y:44},
+  {t:'Luces e instalación', d:'Luces, direccionales, pito y todo el cableado de la moto.', x:262, y:118},
+  {t:'Chasis y carrocería', d:'Estructura, tornillería, piso y piezas plásticas.', x:600, y:262}
+];
+var svg = document.getElementById('moto'), hots = document.getElementById('hots'), list = document.getElementById('plist');
+var NS = 'http://www.w3.org/2000/svg', cur = 0, timer, HR = window.innerWidth < 600 ? 24 : 16;
+PARTS.forEach(function(p, i){
+  var g = document.createElementNS(NS,'g'); g.setAttribute('class','hot'); g.dataset.i = i;
+  g.innerHTML = '<circle class="ring" cx="'+p.x+'" cy="'+p.y+'" r="'+HR+'"/><circle class="dot" cx="'+p.x+'" cy="'+p.y+'" r="'+HR+'"/><text x="'+p.x+'" y="'+(p.y+1)+'"'+(HR>16?' style="font-size:19px"':'')+'>'+String(i+1).padStart(2,'0')+'</text>';
+  g.addEventListener('click', function(){ show(i, true); });
+  hots.appendChild(g);
+  var li = document.createElement('li'); li.innerHTML = '<span>'+String(i+1).padStart(2,'0')+'</span>'+p.t;
+  li.addEventListener('click', function(){ show(i, true); });
+  list.appendChild(li);
+});
+function show(i, user){
+  cur = i;
+  svg.classList.add('focus');
+  svg.querySelectorAll('.part').forEach(function(el){ el.classList.toggle('on', +el.dataset.p === i+1); });
+  hots.querySelectorAll('.hot').forEach(function(el){ el.classList.toggle('on', +el.dataset.i === i); });
+  list.querySelectorAll('li').forEach(function(el, k){ el.classList.toggle('on', k === i); if (k === i && window.innerWidth < 600) list.scrollTo({left: el.offsetLeft - 8, behavior: 'smooth'}); });
+  document.getElementById('pc-n').textContent = String(i+1).padStart(2,'0');
+  document.getElementById('pi-t').textContent = PARTS[i].t;
+  document.getElementById('pi-d').textContent = PARTS[i].d;
+  if (user) { clearInterval(timer); timer = setInterval(next, 6000); }
+}
+function next(){ show((cur+1) % PARTS.length); }
+show(0); timer = setInterval(next, 3800);
+
+// ── 04 Batería ──
+var cells = document.getElementById('cells');
+for (var c = 0; c < 30; c++) { var d = document.createElement('div'); d.className = 'cell'; cells.appendChild(d); }
+var scanning = false;
+document.getElementById('scan').addEventListener('click', function(){
+  if (scanning) return; scanning = true;
+  var all = cells.querySelectorAll('.cell'), st = document.getElementById('pk-st'), res = document.getElementById('pk-res');
+  var warn = [7, 18, 22], bad = [13];
+  all.forEach(function(el){ el.className = 'cell'; });
+  st.textContent = 'Midiendo…'; res.textContent = 'Revisando cada parte del paquete…';
+  all.forEach(function(el, k){
+    setTimeout(function(){
+      el.classList.add(bad.indexOf(k) > -1 ? 'bad' : warn.indexOf(k) > -1 ? 'warn' : 'ok', 'pop');
+      setTimeout(function(){ el.classList.remove('pop'); }, 260);
+      if (k === all.length - 1) {
+        st.textContent = 'Medición completa';
+        res.innerHTML = '<span style="color:var(--gd)">26 en buen estado</span> · <span style="color:#b9811a">3 al límite</span> · <span style="color:var(--bad)">1 con falla</span> → se puede reparar sin cambiar toda la batería.';
+        scanning = false;
+      }
+    }, 70 * k);
+  });
+});
+
+// ── Aparición al hacer scroll ──
+var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold: .12});
+document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+</script>
+</body>
+</html>
