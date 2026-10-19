@@ -344,6 +344,47 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
   .guia .prop{width:38px;height:38px;border-width:3px;right:-6px;bottom:-4px}
   .guia .prop svg{width:17px;height:17px}
 }
+
+/* proceso animado */
+.steps-bar{position:relative;height:4px;border-radius:4px;background:#2c302e;margin-top:28px;overflow:hidden}
+.steps-bar i{position:absolute;left:0;top:0;bottom:0;width:25%;background:var(--grad);border-radius:4px;transition:width .6s ease;box-shadow:0 0 12px rgba(137,188,116,.7)}
+.steps{margin-top:18px}
+.step{opacity:.5;cursor:pointer;transition:opacity .4s,transform .4s,box-shadow .4s,background .4s;padding:14px 14px 22px}
+.step.on{opacity:1;transform:translateY(-4px);background:#222725;box-shadow:0 0 0 1px rgba(99,175,132,.55),0 22px 44px rgba(47,138,87,.2)}
+.step b,.step h4,.step p{margin-left:8px;margin-right:8px}
+.scene{position:relative;height:180px;border-radius:14px;margin-bottom:18px;overflow:hidden;background:radial-gradient(circle at 28% 105%,rgba(99,175,132,.45),transparent 62%),linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px) 0 0/22px 22px,linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px) 0 0/22px 22px,#151817}
+.scene .m{position:absolute;left:6px;bottom:-34px;width:124px;transform:translateY(26px) rotate(0);transition:transform .6s cubic-bezier(.3,1.5,.5,1)}
+.scene .m-ok{width:150px;left:-8px;bottom:-24px}
+.step.on .scene .m{transform:translateY(0) rotate(var(--r,0deg))}
+.pr{position:absolute;right:12px;top:16px;bottom:16px;width:52%;display:flex;align-items:center;justify-content:center}
+.pr-scan .moto-mini{opacity:.9}
+.pr-scan .lupa{position:absolute;left:0;top:18%}
+.step.on .pr-scan .lupa{animation:scan 1.8s ease-in-out infinite alternate}
+@keyframes scan{from{transform:translate(-4px,0) rotate(-8deg)}to{transform:translate(60px,14px) rotate(8deg)}}
+.pr-talk{flex-direction:column;gap:10px;align-items:flex-end}
+.talk{display:flex;gap:6px;background:#fff;border-radius:16px 16px 4px 16px;padding:14px 16px;align-self:flex-start}
+.talk span{width:9px;height:9px;border-radius:50%;background:var(--gd);opacity:.3}
+.step.on .talk span{animation:dot 1.2s infinite}
+.talk span:nth-child(2){animation-delay:.2s!important}.talk span:nth-child(3){animation-delay:.4s!important}
+@keyframes dot{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}
+.photo{width:62px;height:50px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;transform:rotate(6deg) scale(.8);opacity:0;transition:all .5s .3s cubic-bezier(.3,1.5,.5,1)}
+.step.on .photo{transform:rotate(6deg) scale(1);opacity:1}
+.msg{background:#dcf8c6;color:#0e0f0f;border-radius:14px 14px 4px 14px;padding:10px 14px;display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:center;font-size:.78rem;font-weight:700;min-width:130px;transform:translateY(30px);opacity:0;transition:all .6s cubic-bezier(.3,1.4,.5,1)}
+.msg svg{color:#25a35a}
+.msg .amt{grid-column:1/-1;font-size:1.25rem;font-weight:900;letter-spacing:.04em}
+.msg em{grid-column:1/-1;justify-self:end;font-style:normal;color:#34b7f1;font-size:.75rem;opacity:0;transition:opacity .3s 1s}
+.step.on .msg{transform:none;opacity:1}
+.step.on .msg em{opacity:1}
+.ok{width:66px;height:66px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 8px rgba(137,188,116,.15);transform:scale(.4);opacity:0;transition:all .5s .2s cubic-bezier(.3,1.7,.5,1)}
+.step.on .ok{transform:scale(1);opacity:1}
+.sp{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--g2);opacity:0}
+.s1{top:12%;left:30%}.s2{top:20%;right:6%}.s3{bottom:14%;right:22%}
+.step.on .sp{animation:spark 1.6s ease-out infinite}
+.step.on .s2{animation-delay:.4s}.step.on .s3{animation-delay:.8s}
+@keyframes spark{0%{opacity:0;transform:scale(.3)}30%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.2) translateY(-14px)}}
+@media(max-width:980px){.steps-bar{display:none}}
+@media(max-width:600px){.scene{height:160px}.step{opacity:1}.step:not(.on){transform:none}}
+@media(prefers-reduced-motion:reduce){.step *{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -528,11 +569,36 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
     <div class="process reveal">
       <span class="kicker">Cómo trabajamos</span>
       <h3 style="margin-top:12px">Primero el diagnóstico, <span class="gtxt">después la decisión.</span></h3>
-      <div class="steps">
-        <div class="step"><b>1</b><h4>Revisamos</h4><p>Traes tu moto y le hacemos el diagnóstico.</p></div>
-        <div class="step"><b>2</b><h4>Te explicamos</h4><p>Te contamos qué encontramos, con fotos y en palabras claras.</p></div>
-        <div class="step"><b>3</b><h4>Cotizamos</h4><p>Te enviamos el valor por WhatsApp antes de hacer cualquier cosa.</p></div>
-        <div class="step"><b>4</b><h4>Reparamos</h4><p>Solo trabajamos con tu aprobación. Sin sorpresas.</p></div>
+      <div class="steps-bar"><i id="steps-fill"></i></div>
+      <div class="steps" id="steps">
+        <div class="step on" data-i="0">
+          <div class="scene">
+            <img class="m" style="--r:-7deg" src="assets/mascota_busto.png" alt="" loading="lazy" />
+            <div class="pr pr-scan"><svg class="moto-mini" width="92" height="60" viewBox="0 0 92 60" stroke="#89bc74" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="44" r="12"/><circle cx="74" cy="44" r="12"/><path d="M18 44h20l14-22h10l12 22M52 22l-6-12h-8"/><rect x="34" y="30" width="20" height="7" rx="2" fill="#89bc74"/></svg><svg class="lupa" width="54" height="54" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6.5" fill="rgba(255,255,255,.12)"/><path d="M15 15l6 6"/></svg></div>
+          </div>
+          <b>1</b><h4>Revisamos</h4><p>Traes tu moto y le hacemos el diagnóstico.</p>
+        </div>
+        <div class="step" data-i="1">
+          <div class="scene">
+            <img class="m" style="--r:5deg" src="assets/mascota_busto.png" alt="" loading="lazy" />
+            <div class="pr pr-talk"><div class="talk"><span></span><span></span><span></span></div><div class="photo"><svg width="26" height="26" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="1.8"/><path d="M21 16l-5-5-8 8"/></svg></div></div>
+          </div>
+          <b>2</b><h4>Te explicamos</h4><p>Te contamos qué encontramos, con fotos y en palabras claras.</p>
+        </div>
+        <div class="step" data-i="2">
+          <div class="scene">
+            <img class="m" style="--r:-3deg" src="assets/mascota_busto.png" alt="" loading="lazy" />
+            <div class="pr pr-quote"><div class="msg"><svg width="16" height="16"><use href="#i-wa"/></svg><span>Cotización</span><strong class="amt">$ ·····</strong><em>✓✓</em></div></div>
+          </div>
+          <b>3</b><h4>Cotizamos</h4><p>Te enviamos el valor por WhatsApp antes de hacer cualquier cosa.</p>
+        </div>
+        <div class="step" data-i="3">
+          <div class="scene">
+            <img class="m m-ok" src="assets/mascota_ok.png" alt="" loading="lazy" />
+            <div class="pr pr-done"><div class="ok"><svg width="30" height="30" viewBox="0 0 24 24" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i></div>
+          </div>
+          <b>4</b><h4>Reparamos</h4><p>Solo trabajamos con tu aprobación. Sin sorpresas.</p>
+        </div>
       </div>
       <a class="btn btn-g wa-link" data-msg="Hola, quiero agendar un diagnóstico para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar diagnóstico</a>
       <p style="color:#8b958f;font-size:.82rem;margin-top:14px;font-weight:500">*Diagnóstico gratis por tiempo limitado.</p>
@@ -808,6 +874,17 @@ document.getElementById('scan').addEventListener('click', function(){
 // ── Aparición al hacer scroll ──
 var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold: .12});
 document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+// proceso animado
+(function(){
+  var st=[].slice.call(document.querySelectorAll('#steps .step')), fill=document.getElementById('steps-fill'), cur=0, t=null, vis=false, hold=false;
+  if(!st.length) return;
+  function go(i){ cur=i; st.forEach(function(s,k){ s.classList.toggle('on',k===i); }); fill.style.width=((i+1)*25)+'%'; }
+  function tick(){ if(vis && !hold) go((cur+1)%st.length); }
+  st.forEach(function(s,k){ s.addEventListener('mouseenter',function(){ hold=true; go(k); }); s.addEventListener('mouseleave',function(){ hold=false; }); s.addEventListener('click',function(){ go(k); }); });
+  new IntersectionObserver(function(e){ vis=e[0].isIntersecting; }, {threshold:.3}).observe(document.getElementById('steps'));
+  t=setInterval(tick,3200);
+})();
 </script>
 </body>
 </html>
