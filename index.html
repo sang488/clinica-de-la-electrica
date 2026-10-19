@@ -102,7 +102,8 @@ section.sec{padding:110px 0}
 .sec-head h2{font-size:clamp(2rem,4vw,3.3rem);font-weight:900;line-height:1.05;letter-spacing:-.02em;margin-top:10px}
 .sec-head p{color:var(--muted);font-size:1.08rem;max-width:42rem;margin-top:14px;font-weight:500}
 .soft{background:var(--soft)}
-.dark{background:var(--ink);color:#fff}
+.dark{position:relative;isolation:isolate;overflow:hidden;color:#fff;background:radial-gradient(ellipse 55% 50% at 88% 12%,rgba(99,175,132,.40),transparent 70%),radial-gradient(ellipse 45% 45% at 8% 92%,rgba(137,188,116,.24),transparent 70%),radial-gradient(ellipse 70% 60% at 50% 55%,rgba(47,138,87,.14),transparent 75%),#0b0d0c}
+.dark::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.075) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.075) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 85% 85% at 50% 45%,#000 35%,transparent 90%);mask-image:radial-gradient(ellipse 85% 85% at 50% 45%,#000 35%,transparent 90%)}
 .dark .sec-head p{color:#b9c4bd}
 .dark .kicker{color:var(--g2)}
 @media(max-width:700px){.sec-head{grid-template-columns:1fr;gap:6px}section.sec{padding:80px 0}}
@@ -148,7 +149,7 @@ section.sec{padding:110px 0}
 
 /* 03 Servicios */
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.svc{background:#1a1c1b;border:1px solid #2c302e;border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden}
+.svc{background:rgba(26,28,27,.82);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid rgba(255,255,255,.09);border-radius:var(--r);padding:28px 26px;position:relative;overflow:hidden}
 .svc .n{font-weight:900;color:var(--g2);font-size:.85rem;letter-spacing:.1em}
 .svc h3{font-size:1.3rem;font-weight:900;margin:8px 0 12px}
 .svc ul{list-style:none;display:grid;gap:7px}
@@ -244,7 +245,7 @@ section.sec{padding:110px 0}
 .cta-final h2{font-size:clamp(2rem,4.4vw,3.6rem);font-weight:900;line-height:1.02;letter-spacing:-.02em}
 .cta-final p{color:var(--muted);font-weight:500;margin:14px 0 26px;font-size:1.1rem}
 @media(max-width:760px){.cta-final .wrap{grid-template-columns:1fr;text-align:center}.cta-final img{margin:0 auto;height:220px}.cta-final .btns{justify-content:center}}
-footer{background:var(--ink);color:#cfd8d2;padding:56px 0 30px}
+footer{background:radial-gradient(ellipse 50% 70% at 85% 0%,rgba(99,175,132,.18),transparent 70%),linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px) 0 0/64px 64px,linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px) 0 0/64px 64px,#0b0d0c;color:#cfd8d2;padding:56px 0 30px}
 footer .top{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:30px;padding-bottom:34px;border-bottom:1px solid #2a2d2c}
 footer .lg{background:#fff;border-radius:16px;padding:14px 18px;display:inline-block}
 footer .lg img{height:48px;width:auto}
@@ -326,6 +327,31 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 .rep li::before{content:"";flex-shrink:0;width:7px;height:7px;border-radius:50%;background:var(--g1);margin-top:9px}
 .rep .btn{justify-content:center}
 @media(max-width:900px){.rep-grid{grid-template-columns:1fr}}
+
+/* mascota guía por sección */
+.sec-head.has-guia{grid-template-columns:auto 1fr auto}
+.guia{display:flex;align-items:flex-end;gap:12px}
+.guia .bub{background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:18px 18px 4px 18px;padding:12px 16px;font-weight:800;font-size:.9rem;line-height:1.3;max-width:200px;box-shadow:0 12px 28px rgba(0,0,0,.08);margin-bottom:64px}
+.dark .guia .bub{border-color:transparent}
+.guia .av{position:relative;width:140px;height:140px;border-radius:50%;background:var(--grad);flex-shrink:0}
+.guia .clip{position:absolute;left:0;right:0;bottom:0;height:200px;overflow:hidden;border-radius:0 0 70px 70px}
+.guia .clip img{position:absolute;left:50%;bottom:-46px;width:150px;transform:translateX(-50%)}
+.guia .prop{position:absolute;right:-8px;bottom:-6px;width:50px;height:50px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;border:4px solid #fff;box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.soft .guia .prop{border-color:var(--soft)}
+.dark .guia .prop{background:var(--gd);border-color:var(--ink)}
+.reveal .guia .av{transform:scale(.85);transition:transform .6s cubic-bezier(.3,1.6,.5,1) .2s}
+.reveal.in .guia .av{transform:none}
+@media(max-width:1100px){.guia .bub{display:none}}
+@media(max-width:700px){
+  .sec-head.has-guia{grid-template-columns:1fr}
+  .guia{flex-direction:row-reverse;justify-content:flex-end;margin-top:22px}
+  .guia .bub{display:block;margin-bottom:30px;border-radius:18px 18px 18px 4px;max-width:none;flex:1}
+  .guia .av{width:96px;height:96px}
+  .guia .clip{height:140px;border-radius:0 0 48px 48px}
+  .guia .clip img{width:104px;bottom:-32px}
+  .guia .prop{width:38px;height:38px;border-width:3px;right:-6px;bottom:-4px}
+  .guia .prop svg{width:17px;height:17px}
+}
 </style>
 </head>
 <body>
@@ -394,13 +420,14 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 01 DESPIECE ══════════ -->
 <section class="sec" id="despiece">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">01</div>
       <div>
         <span class="kicker">Despiece</span>
         <h2>Conocemos tu moto <span class="gtxt">pieza por pieza.</span></h2>
         <p>Una moto eléctrica es un sistema completo: batería, motor, controlador y todo lo que los conecta. Toca cada punto y mira qué revisamos en la Clínica.</p>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Toca cada parte y te explico qué hace.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5"/></svg></span></div></div>
     </div>
     <div class="despiece reveal">
       <div>
@@ -469,13 +496,14 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 02 ANATOMÍA ══════════ -->
 <section class="sec soft" id="sistemas">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">02</div>
       <div>
         <span class="kicker">Especialidades</span>
         <h2>Cada sistema, <span class="gtxt">su tratamiento.</span></h2>
         <p>Como en una clínica: primero entendemos qué le pasa a tu moto y luego la tratamos con la especialidad que necesita.</p>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Cada sistema tiene su especialidad.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a5 5 0 0 0 10 0V3"/><path d="M10 14v2a5 5 0 0 0 10 0v-3"/><circle cx="20" cy="11" r="2"/></svg></span></div></div>
     </div>
     <div class="grid4 reveal">
       <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><h3>Batería</h3><p>Medición de estado, carga, conexiones y autonomía real.</p></div>
@@ -494,12 +522,13 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 03 SERVICIOS ══════════ -->
 <section class="sec dark" id="servicios">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">03</div>
       <div>
         <span class="kicker">Servicios</span>
         <h2>Todo lo que tu eléctrica necesita, <span class="gtxt">en un solo lugar.</span></h2>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Primero te digo qué tiene. Después decides.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></span></div></div>
     </div>
     <div class="svc-grid reveal">
       <div class="svc feat"><span class="badge">GRATIS*</span><span class="n">01</span><h3>Diagnóstico</h3><ul><li>Revisión completa de la moto</li><li>Encontramos la causa real de la falla</li><li>Te explicamos qué tiene y qué no</li></ul></div>
@@ -527,12 +556,13 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 04 BATERÍA ══════════ -->
 <section class="sec" id="bateria">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">04</div>
       <div>
         <span class="kicker">Batería</span>
         <h2>Antes de cambiar la batería, <span class="gtxt">la revisamos.</span></h2>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Antes de cambiarla, déjame medirla.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></span></div></div>
     </div>
     <div class="bat reveal">
       <div>
@@ -562,13 +592,14 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 05 HISTORIA CLÍNICA ══════════ -->
 <section class="sec soft" id="historia">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">05</div>
       <div>
         <span class="kicker">Seguimiento</span>
         <h2>Tu moto tiene <span class="gtxt">historia clínica.</span></h2>
         <p>Cada vez que tu moto entra a la Clínica, anotamos qué encontramos y qué le hicimos. Así la próxima vez sabemos de dónde viene.</p>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Todo lo que le hago queda anotado.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="18" rx="2"/><path d="M9 4V2h6v2M9 11h6M9 15h4"/></svg></span></div></div>
     </div>
     <div class="hc reveal">
       <div class="chart">
@@ -600,13 +631,14 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 06 REPUESTOS ══════════ -->
 <section class="sec" id="repuestos">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">06</div>
       <div>
         <span class="kicker">Repuestos</span>
         <h2>Lo que tu moto necesita, <span class="gtxt">en un solo lugar.</span></h2>
         <p>Te ayudamos a encontrar el repuesto correcto para tu moto eléctrica y lo instalamos en el taller.</p>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Dime tu moto y te consigo el repuesto.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></span></div></div>
     </div>
     <div class="rep-grid reveal">
       <article class="rep" id="rep-baterias"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><span class="n">01</span><h3>Baterías</h3><p>Baterías de litio para motos y scooters eléctricos.</p><ul><li>Asesoría según voltaje y capacidad</li><li>Revisión del estado de tu batería actual</li><li>Cargadores compatibles</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar una batería para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar batería</a></article>
@@ -620,12 +652,13 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 07 FLOTAS ══════════ -->
 <section class="sec dark" id="flotas">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">07</div>
       <div>
         <span class="kicker">Para quién</span>
         <h2>Para motousuarios, <span class="gtxt">domiciliarios y flotas.</span></h2>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">Sea una moto o diez, yo las cuido.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span></div></div>
     </div>
     <div class="fleet reveal">
       <div>
@@ -646,13 +679,14 @@ footer .bot{padding-top:22px;font-size:.85rem;color:#8b958f;display:flex;justify
 <!-- ══════════ 08 UBICACIÓN ══════════ -->
 <section class="sec" id="ubicacion">
   <div class="wrap">
-    <div class="sec-head reveal">
+    <div class="sec-head has-guia reveal">
       <div class="sec-num">08</div>
       <div>
         <span class="kicker">Dónde estamos</span>
         <h2>Trae tu moto <span class="gtxt">a Briceño.</span></h2>
         <p>Así llegas a nuestra nueva sede:</p>
       </div>
+      <div class="guia" aria-hidden="true"><div class="bub">¡Aquí te espero en Briceño!</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span></div></div>
     </div>
     <div class="route reveal">
       <div class="rstep"><img src="assets/carretera.jpg" alt="Llegada a Briceño" loading="lazy" /><div><b>1</b><h4>Llega a Briceño</h4></div></div>
