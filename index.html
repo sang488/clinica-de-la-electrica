@@ -164,7 +164,7 @@ section.sec{padding:110px 0}
 @media(max-width:600px){.svc-grid,.steps{grid-template-columns:1fr}.process{padding:26px}}
 
 /* 04 Batería */
-.bat{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.bat{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
 .bat .big{font-size:clamp(1.8rem,3.4vw,2.8rem);font-weight:900;line-height:1.08;letter-spacing:-.02em}
 .bat p{color:var(--muted);font-weight:500;margin-top:14px;font-size:1.05rem}
 .pack{background:#fff;border:1px solid var(--line);border-radius:28px;padding:26px;box-shadow:0 20px 50px rgba(30,60,40,.07)}
@@ -196,7 +196,7 @@ section.sec{padding:110px 0}
 .bar i{display:block;height:100%;border-radius:8px;background:var(--grad)}
 .timeline{display:grid;gap:14px}
 .entry{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 22px;border-radius:20px;background:#fff;border:1px solid var(--line)}
-.entry .d{font-weight:900;color:var(--gd);font-size:.85rem;white-space:nowrap}
+.entry .d{font-weight:900;color:var(--gd);font-size:.85rem;white-space:nowrap;min-width:78px}
 .entry h4{font-weight:800}
 .entry p{color:var(--muted);font-weight:500;font-size:.93rem}
 .ex{display:inline-block;margin-top:14px;font-size:.78rem;color:var(--muted);font-weight:600}
@@ -204,7 +204,7 @@ section.sec{padding:110px 0}
 
 /* 06 Flotas */
 .fleet{display:grid;grid-template-columns:.9fr 1.1fr;gap:40px;align-items:center}
-.fleet-list{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fleet-list{display:grid;grid-template-columns:1fr;gap:14px}
 .fl{padding:22px;border-radius:20px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12)}
 .fl b{color:var(--g2);font-weight:900;font-size:.85rem}
 .fl h4{font-weight:800;margin:6px 0 4px}
@@ -391,6 +391,13 @@ button{font-family:inherit}
 .mt-bar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:14px}
 .mt-bar i{display:block;height:100%;width:0;background:var(--grad);transition:width .5s ease}
 .mt-list{list-style:none;display:grid;gap:8px}
+.mt-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s ease}
+.mt-body>div{overflow:hidden}
+.mt.open .mt-body{grid-template-rows:1fr}
+.pack.mt .mt-bar{margin-bottom:0}
+.mt.open .mt-bar{margin-bottom:14px}
+#mt-run .chev{transition:transform .3s}
+#mt-run[aria-expanded="true"] .chev{transform:rotate(180deg)}
 .mt-list li{display:grid;grid-template-columns:30px 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid var(--line);transition:background .3s,border-color .3s}
 .mt-list li i{width:30px;height:30px;border-radius:50%;border:2px solid var(--idle);position:relative;transition:all .3s}
 .mt-list li b{display:block;font-weight:800;font-size:.95rem}
@@ -446,9 +453,9 @@ button{font-family:inherit}
 <section class="hero" id="inicio">
   <div class="wrap">
     <div>
-      <span class="kicker">Taller de motos eléctricas · Multimarca</span>
+      <span class="kicker">Taller de motos eléctricas</span>
       <h1>Le tomamos el <span class="gtxt">pulso</span> a tu moto eléctrica.</h1>
-      <p class="lead">Diagnóstico, mantenimiento y reparación de motos y scooters eléctricos de todas las marcas, con un técnico especializado. Nueva sede en <b>Briceño</b>, para motousuarios de Sopó, Briceño y Tocancipá.</p>
+      <p class="lead">Diagnóstico, mantenimiento y reparación de motos y scooters eléctricos. Nueva sede en <b>Briceño</b>, para motousuarios de Sopó, Briceño y Tocancipá.</p>
       <div class="ctas">
         <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar por WhatsApp</a>
         <a class="btn btn-o" href="tel:+573195037492"><svg width="20" height="20"><use href="#i-phone"/></svg>319 503 7492</a>
@@ -543,31 +550,6 @@ button{font-family:inherit}
   </div>
 </section>
 
-<!-- ══════════ 02 ANATOMÍA ══════════ -->
-<section class="sec soft" id="sistemas">
-  <div class="wrap">
-    <div class="sec-head has-guia reveal">
-      <div>
-        <span class="kicker">Especialidades</span>
-        <h2>Cada sistema, <span class="gtxt">su tratamiento.</span></h2>
-        <p>Como en una clínica: primero entendemos qué le pasa a tu moto y luego la tratamos con la especialidad que necesita.</p>
-      </div>
-      <div class="guia" aria-hidden="true"><div class="bub">Cada sistema tiene su especialidad.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v6a5 5 0 0 0 10 0V3"/><path d="M10 14v2a5 5 0 0 0 10 0v-3"/><circle cx="20" cy="11" r="2"/></svg></span></div></div>
-    </div>
-    <div class="grid4 reveal">
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><h3>Batería</h3><p>Medición de estado, carga, conexiones y autonomía real.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg></div><h3>Motor</h3><p>Motor de rueda: ruidos, pérdida de fuerza, sensores y rodamientos.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6v6H9zM9 1v3M15 1v3M9 20v3M15 20v3M20 9h3M20 14h3M1 9h3M1 14h3"/></svg></div><h3>Controlador</h3><p>El “cerebro” de la moto: fallas de arranque, cortes y códigos de error.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6M15 2v6M6 8h12v4a6 6 0 0 1-12 0zM12 18v4"/></svg></div><h3>Carga</h3><p>Cargadores, puertos y cables: si no carga o carga lento, lo revisamos.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><path d="M12 3v2M21 12h-2"/></svg></div><h3>Frenos</h3><p>Pastillas, discos, ajuste y corte de motor al frenar.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M8 6h8l-2 4h-4zM10 14h4l2 4H8z"/></svg></div><h3>Suspensión</h3><p>Amortiguadores delanteros y traseros, golpes y desalineación.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 0 0-4 12.7V17h8v-2.3A7 7 0 0 0 12 2z"/></svg></div><h3>Luces y cableado</h3><p>Instalación eléctrica, luces, pito, direccionales y tablero.</p></div>
-      <div class="sys"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><h3>Mantenimiento</h3><p>Revisión general preventiva para que tu moto no te deje tirado.</p></div>
-    </div>
-    <div class="note-strip reveal"><svg width="22" height="22" style="color:var(--gd)"><use href="#i-bolt"/></svg>Trabajamos con motos y scooters eléctricos de todas las marcas.</div>
-  </div>
-</section>
-
 <!-- ══════════ 03 SERVICIOS ══════════ -->
 <section class="sec dark" id="servicios">
   <div class="wrap">
@@ -582,7 +564,7 @@ button{font-family:inherit}
       <div class="svc feat"><span class="badge">GRATIS*</span><span class="n">01</span><h3>Diagnóstico</h3><ul><li>Revisión completa de la moto</li><li>Encontramos la causa real de la falla</li><li>Te explicamos qué tiene y qué no</li></ul></div>
       <div class="svc"><span class="n">02</span><h3>Batería y carga</h3><ul><li>Prueba de estado y autonomía</li><li>Revisión de cargador y puerto</li><li>Conexiones y BMS</li></ul></div>
       <div class="svc"><span class="n">03</span><h3>Motor y controlador</h3><ul><li>Pérdida de potencia o tirones</li><li>Fallas de arranque</li><li>Sensores y cableado del motor</li></ul></div>
-      <div class="svc"><span class="n">04</span><h3>Mantenimiento preventivo</h3><ul><li>Ajuste general y lubricación</li><li>Frenos, llantas y suspensión</li><li>Chequeo eléctrico</li></ul></div>
+      <div class="svc"><span class="n">04</span><h3>Mantenimiento preventivo</h3><ul><li>Chequeo anual de toda la moto</li><li><a href="#mantenimiento" style="color:var(--g2);font-weight:800">Ver qué incluye →</a></li></ul></div>
       <div class="svc"><span class="n">05</span><h3>Sistema eléctrico</h3><ul><li>Luces, pito y direccionales</li><li>Tablero y controles</li><li>Cortos e instalación</li></ul></div>
       <div class="svc"><span class="n">06</span><h3>Reparación general</h3><ul><li>Cambio de piezas</li><li>Frenos y rodamientos</li><li>Carrocería y ajustes</li></ul></div>
     </div>
@@ -621,7 +603,6 @@ button{font-family:inherit}
         </div>
       </div>
       <a class="btn btn-g wa-link" data-msg="Hola, quiero agendar un diagnóstico para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar diagnóstico</a>
-      <p style="color:#8b958f;font-size:.82rem;margin-top:14px;font-weight:500">*Diagnóstico gratis por tiempo limitado.</p>
     </div>
   </div>
 </section>
@@ -643,15 +624,17 @@ button{font-family:inherit}
         <p>En el mantenimiento, el técnico revisa todo y encuentra a tiempo cualquier falla o necesidad, como un ajuste de frenos, antes de que se convierta en un daño mayor.</p>
         <div style="margin-top:28px;display:flex;flex-wrap:wrap;gap:12px">
           <a class="btn btn-g wa-link" data-msg="Hola, quiero agendar el mantenimiento preventivo de mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Agendar mantenimiento</a>
-          <button class="btn btn-o" id="mt-run" type="button">Ver qué revisamos</button>
+          <button class="btn btn-o" id="mt-run" type="button" aria-expanded="false" aria-controls="mt-body"><span>Ver qué revisamos</span><svg class="chev" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></button>
         </div>
       </div>
       <div class="pack mt">
         <div class="pack-top"><span>Orden de mantenimiento</span><small id="mt-st">Revisión anual</small></div>
         <div class="mt-bar"><i id="mt-fill"></i></div>
+        <div class="mt-body" id="mt-body"><div>
         <ul class="mt-list" id="mt-list"><li data-s="cambio"><i></i><div><b>Pastillas de freno</b><small>Desgaste y cambio</small></div><em>Cambio</em></li><li data-s="ok"><i></i><div><b>Discos de freno</b><small>Estado y desgaste</small></div><em>Revisado</em></li><li data-s="ajuste"><i></i><div><b>Ajuste de frenos</b><small>Recorrido y respuesta</small></div><em>Ajustado</em></li><li data-s="ok"><i></i><div><b>Revisión eléctrica</b><small>Batería, cableado, conexiones y luces</small></div><em>Revisado</em></li><li data-s="ajuste"><i></i><div><b>Lubricación interna</b><small>Rodamientos, ejes y partes móviles</small></div><em>Lubricado</em></li><li data-s="ajuste"><i></i><div><b>Tornillería y suspensión</b><small>Ajuste general</small></div><em>Ajustado</em></li></ul>
         <div class="res" id="mt-res">Así es una revisión de mantenimiento preventivo en la Clínica.</div>
         <span class="ex">Ejemplo ilustrativo. Lo que necesite tu moto se define en la revisión.</span>
+        </div></div>
       </div>
     </div>
   </div>
@@ -685,11 +668,12 @@ button{font-family:inherit}
       </div>
       <div>
         <div class="timeline">
-          <div class="entry"><span class="d">Ingreso</span><div><h4>Diagnóstico</h4><p>Revisión completa. Se encuentra conexión floja en la batería y pastillas de freno gastadas.</p></div></div>
-          <div class="entry"><span class="d">Mismo día</span><div><h4>Cotización por WhatsApp</h4><p>Se envían fotos de lo encontrado y el valor del trabajo. El dueño aprueba.</p></div></div>
-          <div class="entry"><span class="d">Salida</span><div><h4>De alta</h4><p>Conexión reparada, frenos cambiados y prueba de ruta. Moto lista para rodar.</p></div></div>
+          <div class="entry"><span class="d">Entrada</span><div><h4>Fecha, kilometraje y motivo</h4><p>Lo que le pasa a tu moto, contado por ti.</p></div></div>
+          <div class="entry"><span class="d">Hallazgos</span><div><h4>Diagnóstico con fotos</h4><p>Qué encontró el técnico y en qué estado está cada sistema.</p></div></div>
+          <div class="entry"><span class="d">Trabajos</span><div><h4>Reparaciones y repuestos</h4><p>Qué se cambió, qué se ajustó y qué piezas se instalaron.</p></div></div>
+          <div class="entry"><span class="d">Próxima</span><div><h4>Próximo chequeo</h4><p>Cuándo le toca volver y qué hay que vigilar.</p></div></div>
         </div>
-        <span class="ex">Caso de ejemplo para ilustrar el proceso.</span>
+        <span class="ex">Ejemplo ilustrativo.</span>
       </div>
     </div>
   </div>
@@ -701,14 +685,13 @@ button{font-family:inherit}
     <div class="sec-head has-guia reveal">
       <div>
         <span class="kicker">Repuestos</span>
-        <h2>Lo que tu moto necesita, <span class="gtxt">en un solo lugar.</span></h2>
-        <p>Te ayudamos a encontrar el repuesto correcto para tu moto eléctrica y lo instalamos en el taller.</p>
+        <h2>El repuesto correcto, <span class="gtxt">instalado en el taller.</span></h2>
       </div>
       <div class="guia" aria-hidden="true"><div class="bub">Dime tu moto y te consigo el repuesto.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></span></div></div>
     </div>
     <div class="rep-grid reveal">
       <article class="rep" id="rep-baterias"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><span class="n">01</span><h3>Baterías</h3><p>Baterías de litio y de plomo para motos y scooters eléctricos.</p><ul><li>Asesoría según voltaje y capacidad</li><li>Revisión del estado de tu batería actual</li><li>Cargadores compatibles</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar una batería para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar batería</a></article>
-      <article class="rep" id="rep-llantas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></div><span class="n">02</span><h3>Llantas</h3><p>Llantas y neumáticos para motos y scooters eléctricos.</p><ul><li>Diferentes medidas y referencias</li><li>Cambio e instalación en el taller</li><li>Revisión de rines y presión</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar llantas para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar llantas</a></article>
+      <article class="rep" id="rep-llantas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></div><span class="n">02</span><h3>Llantas</h3><p>Llantas y neumáticos para motos y scooters eléctricos.</p><ul><li>Diferentes medidas y referencias</li><li>Asesoría según el uso de tu moto</li><li>Revisión de rines y presión</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar llantas para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar llantas</a></article>
       <article class="rep" id="rep-piezas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><span class="n">03</span><h3>Piezas</h3><p>Repuestos para los sistemas de tu moto.</p><ul><li>Frenos, pastillas y discos</li><li>Controladores, aceleradores y sensores</li><li>Luces, cableado y accesorios</li></ul><a class="btn btn-g wa-link" data-msg="Hola, necesito un repuesto para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar pieza</a></article>
     </div>
     <div class="note-strip reveal"><svg width="22" height="22" style="color:var(--gd)"><use href="#i-bolt"/></svg>Escríbenos la marca y el modelo de tu moto y te confirmamos disponibilidad.</div>
@@ -727,15 +710,13 @@ button{font-family:inherit}
     </div>
     <div class="fleet reveal">
       <div>
-        <p style="color:#cfd8d2;font-size:1.1rem;font-weight:500">Si usas tu moto eléctrica para ir al trabajo, para hacer domicilios o tienes varias motos en tu negocio, te ayudamos a mantenerlas rodando.</p>
-        <div class="zones"><span>Sopó</span><span>Briceño</span><span>Tocancipá</span></div>
+        <p style="color:#cfd8d2;font-size:1.1rem;font-weight:500">Cada uso desgasta la moto de forma distinta. Ajustamos el mantenimiento a cómo usas la tuya.</p>
         <div style="margin-top:30px"><a class="btn btn-g wa-link" data-msg="Hola, tengo varias motos eléctricas y quiero hablar de mantenimiento" href="#" target="_blank" rel="noopener"><svg width="22" height="22"><use href="#i-wa"/></svg>Tengo varias motos</a></div>
       </div>
       <div class="fleet-list">
         <div class="fl"><b>01</b><h4>Uso diario</h4><p>Mantenimiento para que tu moto te lleve y te traiga sin sustos.</p></div>
         <div class="fl"><b>02</b><h4>Domiciliarios</h4><p>Tu moto es tu herramienta de trabajo: la queremos de vuelta en la calle rápido.</p></div>
         <div class="fl"><b>03</b><h4>Negocios con varias motos</h4><p>Armamos contigo un plan de revisiones para todas tus motos.</p></div>
-        <div class="fl"><b>04</b><h4>Cualquier marca</h4><p>Somos multimarca: no importa dónde compraste tu eléctrica.</p></div>
       </div>
     </div>
   </div>
@@ -874,8 +855,14 @@ show(0); timer = setInterval(next, 3800);
       }, 650*k+650);
     });
   }
-  document.getElementById('mt-run').addEventListener('click', run);
-  new IntersectionObserver(function(e,o){ if(e[0].isIntersecting && !done){ run(); o.disconnect(); } }, {threshold:.5}).observe(list);
+  var btn=document.getElementById('mt-run'), card=list.closest('.mt');
+  btn.addEventListener('click', function(){
+    var open=!card.classList.contains('open');
+    card.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open);
+    btn.querySelector('span').textContent = open ? 'Ocultar lista' : 'Ver qué revisamos';
+    if(open){ setTimeout(run, 250); }
+  });
 })();
 
 // ── Aparición al hacer scroll ──
