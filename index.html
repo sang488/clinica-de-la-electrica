@@ -39,7 +39,7 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);bac
 .nav nav{display:flex;gap:26px;font-weight:700;font-size:.92rem}
 .nav nav a{position:relative;padding:6px 0}
 .nav nav a::after{content:"";position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--grad);border-radius:3px;transition:width .2s}
-.nav nav a:hover::after{width:100%}
+.nav nav a:hover::after,.nav nav a.on::after{width:100%}
 .nav .btn{padding:12px 20px;font-size:.9rem}
 .burger{display:none;width:46px;height:46px;border-radius:14px;border:1.5px solid var(--line);background:#fff;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0}
 .burger span,.burger span::before,.burger span::after{display:block;width:20px;height:2.5px;border-radius:2px;background:var(--ink);position:relative;transition:transform .2s, background .2s}
@@ -430,17 +430,18 @@ button{font-family:inherit}
 <!-- ══════════ NAV ══════════ -->
 <header class="nav" id="topnav">
   <div class="wrap">
-    <a href="#inicio" class="logo"><img src="assets/logo.png" alt="Clínica de la Eléctrica" /></a>
+    <a href="index.html" class="logo"><img src="assets/logo.png" alt="Clínica de la Eléctrica" /></a>
     <nav>
-      <a href="#historia">Historia clínica</a>
+      <a href="index.html#historia">Historia clínica</a>
       <div class="dd">
-        <a href="#repuestos" class="dd-t">Repuestos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
+        <a href="repuestos.html" class="dd-t">Repuestos <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></a>
         <div class="dd-m">
-          <a href="#rep-baterias">Baterías</a>
-          <a href="#rep-llantas">Llantas</a>
-          <a href="#rep-piezas">Piezas</a>
+          <a href="repuestos.html#rep-baterias">Baterías</a>
+          <a href="repuestos.html#rep-llantas">Llantas</a>
+          <a href="repuestos.html#rep-piezas">Piezas</a>
         </div>
       </div>
+      <a href="ubicanos.html">Ubícanos</a>
     </nav>
     <div class="nav-right">
       <a class="btn btn-g wa-link" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg><span>Agendar cita</span></a>
@@ -679,25 +680,6 @@ button{font-family:inherit}
   </div>
 </section>
 
-<!-- ══════════ 06 REPUESTOS ══════════ -->
-<section class="sec" id="repuestos">
-  <div class="wrap">
-    <div class="sec-head has-guia reveal">
-      <div>
-        <span class="kicker">Repuestos</span>
-        <h2>El repuesto correcto, <span class="gtxt">instalado en el taller.</span></h2>
-      </div>
-      <div class="guia" aria-hidden="true"><div class="bub">Dime tu moto y te consigo el repuesto.</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></span></div></div>
-    </div>
-    <div class="rep-grid reveal">
-      <article class="rep" id="rep-baterias"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="18" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/></svg></div><span class="n">01</span><h3>Baterías</h3><p>Baterías de litio y de plomo para motos y scooters eléctricos.</p><ul><li>Asesoría según voltaje y capacidad</li><li>Revisión del estado de tu batería actual</li><li>Cargadores compatibles</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar una batería para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar batería</a></article>
-      <article class="rep" id="rep-llantas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M12 3v5.5M12 15.5V21M3 12h5.5M15.5 12H21"/></svg></div><span class="n">02</span><h3>Llantas</h3><p>Llantas y neumáticos para motos y scooters eléctricos.</p><ul><li>Diferentes medidas y referencias</li><li>Asesoría según el uso de tu moto</li><li>Revisión de rines y presión</li></ul><a class="btn btn-g wa-link" data-msg="Hola, quiero cotizar llantas para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar llantas</a></article>
-      <article class="rep" id="rep-piezas"><div class="ico"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z"/></svg></div><span class="n">03</span><h3>Piezas</h3><p>Repuestos para los sistemas de tu moto.</p><ul><li>Frenos, pastillas y discos</li><li>Controladores, aceleradores y sensores</li><li>Luces, cableado y accesorios</li></ul><a class="btn btn-g wa-link" data-msg="Hola, necesito un repuesto para mi moto eléctrica" href="#" target="_blank" rel="noopener"><svg width="20" height="20"><use href="#i-wa"/></svg>Cotizar pieza</a></article>
-    </div>
-    <div class="note-strip reveal"><svg width="22" height="22" style="color:var(--gd)"><use href="#i-bolt"/></svg>Escríbenos la marca y el modelo de tu moto y te confirmamos disponibilidad.</div>
-  </div>
-</section>
-
 <!-- ══════════ 07 FLOTAS ══════════ -->
 <section class="sec dark" id="flotas">
   <div class="wrap">
@@ -722,33 +704,6 @@ button{font-family:inherit}
   </div>
 </section>
 
-<!-- ══════════ 08 UBICACIÓN ══════════ -->
-<section class="sec" id="ubicacion">
-  <div class="wrap">
-    <div class="sec-head has-guia reveal">
-      <div>
-        <span class="kicker">Dónde estamos</span>
-        <h2>Trae tu moto <span class="gtxt">a Briceño.</span></h2>
-        <p>Así llegas a nuestra nueva sede:</p>
-      </div>
-      <div class="guia" aria-hidden="true"><div class="bub">¡Aquí te espero en Briceño!</div><div class="av"><div class="clip"><img src="assets/mascota_busto.png" alt="" loading="lazy" /></div><span class="prop"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.5 7-13a7 7 0 0 0-14 0c0 5.5 7 13 7 13z"/><circle cx="12" cy="9" r="2.5"/></svg></span></div></div>
-    </div>
-    <div class="route reveal">
-      <div class="rstep"><img src="assets/carretera.jpg" alt="Llegada a Briceño" loading="lazy" /><div><b>1</b><h4>Llega a Briceño</h4></div></div>
-      <div class="rstep"><img src="assets/porton.jpg" alt="Portón negro de entrada" loading="lazy" /><div><b>2</b><h4>Entra por el portón negro</h4></div></div>
-      <div class="rstep"><img src="assets/parqueadero.jpg" alt="Parqueadero" loading="lazy" /><div><b>3</b><h4>Sigue hasta el fondo del parqueadero</h4></div></div>
-      <div class="rstep here"><img src="assets/sede.jpg" alt="Sede Clínica de la Eléctrica" loading="lazy" /><div><b>4</b><h4>¡Aquí es!</h4></div></div>
-    </div>
-    <div class="info reveal">
-      <a class="wa-link" href="#" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" style="color:#25a35a"><use href="#i-wa"/></svg></span><span>319 503 7492<small>WhatsApp y llamadas</small></span></a>
-      <div><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span>9:00 AM – 6:00 PM<small>Horario de atención</small></span></div>
-      <a href="https://www.google.com/maps/search/?api=1&query=Cl%C3%ADnica+de+la+El%C3%A9ctrica+Brice%C3%B1o" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span>Briceño<small>Ver en Google Maps</small></span></a>
-      <a href="https://www.instagram.com/clinicadelaelectrica/" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f8a57" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#2f8a57"/></svg></span><span>@Clinicadelaelectrica<small>Instagram</small></span></a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ CTA FINAL ══════════ -->
 <section class="cta-final">
   <div class="wrap">
     <img src="assets/mascota.png" alt="" loading="lazy" />
@@ -803,6 +758,7 @@ document.getElementById('yr').textContent = new Date().getFullYear();
 document.querySelectorAll('#topnav nav a').forEach(function(a){ a.addEventListener('click', function(){ document.getElementById('topnav').classList.remove('open'); }); });
 
 // ── 01 Despiece interactivo ──
+if (document.getElementById('moto')) {
 var PARTS = [
   {t:'Batería de litio o plomo', d:'Revisamos estado, voltaje, conexiones y cuánta autonomía real le queda.', x:418, y:282},
   {t:'Motor', d:'El motor va en la rueda trasera. Revisamos ruidos, fuerza, sensores y rodamientos.', x:676, y:330},
@@ -839,6 +795,7 @@ function show(i, user){
 }
 function next(){ show((cur+1) % PARTS.length); }
 show(0); timer = setInterval(next, 3800);
+}
 
 // ── 04 Mantenimiento ──
 (function(){
